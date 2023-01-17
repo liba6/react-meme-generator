@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
   const [top, setTop] = useState('');
@@ -12,11 +13,12 @@ function App() {
       <br />
       <label for="bottom"> Write the bottom text </label>
       <input id="bottom" value={setBottom} />
+      <br />
+      <br />
       <button
         onClick={() => (
           <h2>
-            {top}
-            {bottom}
+            'https://api.memegen.link/images/buzz/{top}/{bottom}.gif'
           </h2>
         )}
       >
