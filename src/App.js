@@ -5,6 +5,10 @@ function App() {
   const [top, setTop] = useState('');
   const [bottom, setBottom] = useState('');
   const [meme, setMeme] = useState('both');
+  const url = top
+    ? `https://api.memegen.link/images/${meme}/${top}/${bottom}.png`
+    : `https://api.memegen.link/images/${meme}.png`;
+  console.log(setTop);
 
   return (
     <div>
@@ -40,7 +44,7 @@ function App() {
       <button
         className="btn"
         onClick={() => {
-          ('https://api.memegen.link/images/both/{top}/{bottom}.png');
+          ('https://api.memegen.link/images/{meme}/{top}/{bottom}.png');
         }}
       >
         Download
@@ -49,10 +53,7 @@ function App() {
       <br />
       <br />
 
-      <img
-        src="https://api.memegen.link/images/both/{top}/{bottom}.png"
-        alt="meme"
-      ></img>
+      <img data-test-id="meme-image" src={url} alt="meme"></img>
     </div>
   );
 }
