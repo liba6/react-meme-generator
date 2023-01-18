@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <h1>React Meme Generator</h1>
-      <label for="top">Write the top text </label>
+      <label for="top">Top text </label>
       <input
         id="top"
         value={top}
@@ -17,7 +17,7 @@ function App() {
       />
       <br />
       <br />
-      <label for="bottom"> Write the bottom text </label>
+      <label for="bottom">Buttom text </label>
       <input
         id="bottom"
         value={bottom}
@@ -27,17 +27,17 @@ function App() {
       />
       <br />
       <br />
+      <br />
+      <h2>
+        https://api.memegen.link/images/both/{top}/{bottom}.png
+      </h2>
       <button
-        onClick={(event) => {
-          console.log(`{top} {bottom}`);
+        onClick={() => {
+          console.log({ top });
         }}
       >
         Preview
       </button>
-      <h2>
-        {top}
-        {bottom}
-      </h2>
     </div>
   );
 }
