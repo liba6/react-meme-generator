@@ -53,10 +53,12 @@ function App() {
       </div>
       <br />
       <br />
+
       <button
         className="btn"
         onClick={() => {
           saveAs(url, 'meme.jpg');
+          window.localStorage.setItem(meme, JSON.stringify(`${top} ${bottom}`));
         }}
       >
         Download
