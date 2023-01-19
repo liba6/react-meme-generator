@@ -6,9 +6,16 @@ function App() {
   const [top, setTop] = useState('');
   const [bottom, setBottom] = useState('');
   const [meme, setMeme] = useState('both');
+
   const url = top
-    ? `https://api.memegen.link/images/${meme}/${top}/${bottom}.png`
-    : `https://api.memegen.link/images/${meme}.png`;
+    ? `https://api.memegen.link/images/${meme}/${top.replace(
+        '?',
+        '~q',
+      )}/${bottom.replace('?', '~q')}.png`
+    : `https://api.memegen.link/images/${meme}/-/${bottom.replace(
+        '?',
+        '~q',
+      )}.png`;
 
   return (
     <div>
@@ -16,6 +23,7 @@ function App() {
       <div className="labels">
         <label htmlFor="meme">Meme template</label>
         <input
+          className="input"
           id="meme"
           value={meme}
           onChange={(event) => {
@@ -24,6 +32,7 @@ function App() {
         />
         <label htmlFor="top">Top text </label>
         <input
+          className="input"
           id="top"
           onChange={(event) => {
             setTop(event.currentTarget.value);
@@ -34,6 +43,7 @@ function App() {
         <br />
         <label htmlFor="bottom">Bottom text </label>
         <input
+          className="input"
           id="bottom"
           value={bottom}
           onChange={(event) => {
@@ -41,6 +51,8 @@ function App() {
           }}
         />
       </div>
+      <br />
+      <br />
       <button
         className="btn"
         onClick={() => {
@@ -57,5 +69,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
