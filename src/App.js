@@ -44,7 +44,7 @@ function App() {
       <button
         className="btn"
         onClick={() => {
-          saveAs(url, 'meme.png');
+          saveAs(url, 'meme.jpg');
         }}
       >
         Download
