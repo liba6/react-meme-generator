@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { saveAs } from 'file-saver';
 
 function App() {
+  // JSON.parse(localStorage.getItem('top'))
+  // JSON.parse(localStorage.getItem('bottom'))
+
   const [top, setTop] = useState('');
   const [bottom, setBottom] = useState('');
   const [meme, setMeme] = useState('both');
@@ -58,7 +61,9 @@ function App() {
         className="btn"
         onClick={() => {
           saveAs(url, 'meme.jpg');
-          window.localStorage.setItem(meme, JSON.stringify(`${top} ${bottom}`));
+          localStorage.setItem('meme', JSON.stringify(`${meme}`));
+          localStorage.setItem('top', JSON.stringify(`${top}`));
+          localStorage.setItem('bottom', JSON.stringify(`${bottom}`));
         }}
       >
         Download
