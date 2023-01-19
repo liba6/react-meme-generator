@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import { saveAs } from 'file-saver';
 
 function App() {
   const [top, setTop] = useState('');
@@ -8,7 +9,6 @@ function App() {
   const url = top
     ? `https://api.memegen.link/images/${meme}/${top}/${bottom}.png`
     : `https://api.memegen.link/images/${meme}.png`;
-  console.log(setTop);
 
   return (
     <div>
@@ -17,18 +17,18 @@ function App() {
         <label for="meme">Meme template</label>
         <input
           id="meme"
-          value={meme}
           onChange={(event) => {
             setMeme(event.currentTarget.value);
           }}
+          value={meme}
         ></input>
         <label for="top">Top text </label>
         <input
           id="top"
-          value={top}
           onChange={(event) => {
             setTop(event.currentTarget.value);
           }}
+          value={top}
         />
         <br />
         <br />
@@ -44,7 +44,7 @@ function App() {
       <button
         className="btn"
         onClick={() => {
-          ('https://api.memegen.link/images/{meme}/{top}/{bottom}.png');
+          saveAs(url, 'meme.png');
         }}
       >
         Download
