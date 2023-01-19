@@ -14,15 +14,15 @@ function App() {
     <div>
       <h1>React Meme Generator</h1>
       <div className="labels">
-        <label for="meme">Meme template</label>
+        <label htmlFor="meme">Meme template</label>
         <input
           id="meme"
+          value={meme}
           onChange={(event) => {
             setMeme(event.currentTarget.value);
           }}
-          value={meme}
         ></input>
-        <label for="top">Top text </label>
+        <label htmlFor="top">Top text </label>
         <input
           id="top"
           onChange={(event) => {
@@ -32,7 +32,7 @@ function App() {
         />
         <br />
         <br />
-        <label for="bottom">Bottom text </label>
+        <label htmlFor="bottom">Bottom text </label>
         <input
           id="bottom"
           value={bottom}
