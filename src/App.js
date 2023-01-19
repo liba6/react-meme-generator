@@ -21,7 +21,7 @@ function App() {
           onChange={(event) => {
             setMeme(event.currentTarget.value);
           }}
-        ></input>
+        />
         <label htmlFor="top">Top text </label>
         <input
           id="top"
@@ -53,7 +53,7 @@ function App() {
       <br />
       <br />
 
-      <img data-test-id="meme-image" src={url} alt="meme"></img>
+      <img data-test-id="meme-image" src={url} alt="meme" />
     </div>
   );
 }
