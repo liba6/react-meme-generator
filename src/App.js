@@ -3,21 +3,21 @@ import React, { useState } from 'react';
 import { saveAs } from 'file-saver';
 
 function App() {
-  // JSON.parse(localStorage.getItem('top'))
-  // JSON.parse(localStorage.getItem('bottom'))
+  const topInput = JSON.parse(localStorage.getItem('top'));
+  const bottomInput = JSON.parse(localStorage.getItem('bottom'));
 
-  const [top, setTop] = useState('');
-  const [bottom, setBottom] = useState('');
+  const [top, setTop] = useState(topInput ? topInput : '');
+  const [bottom, setBottom] = useState(bottomInput ? bottomInput : '');
   const [meme, setMeme] = useState('both');
 
   const url = top
     ? `https://api.memegen.link/images/${meme}/${top.replace(
-        '?',
-        '~q',
-      )}/${bottom.replace('?', '~q')}.png`
+        /[?#/]/g,
+        (x) => ({ '?': '~q', '#': '~h', '/': '~s' }[x]),
+      )}/${bottom.replace('?', '~q').replace('#', '~h').replace('/', '~s')}.png`
     : `https://api.memegen.link/images/${meme}/-/${bottom.replace(
-        '?',
-        '~q',
+        /[?#/]/g,
+        (x) => ({ '?': '~q', '#': '~h', '/': '~s' }[x]),
       )}.png`;
 
   return (
@@ -61,13 +61,14 @@ function App() {
         className="btn"
         onClick={() => {
           saveAs(url, 'meme.jpg');
-          localStorage.setItem('meme', JSON.stringify(`${meme}`));
-          localStorage.setItem('top', JSON.stringify(`${top}`));
-          localStorage.setItem('bottom', JSON.stringify(`${bottom}`));
+          localStorage.setItem('meme', JSON.stringify(meme));
+          localStorage.setItem('top', JSON.stringify(top));
+          localStorage.setItem('bottom', JSON.stringify(bottom));
         }}
       >
         Download
       </button>
+
       <br />
       <br />
       <br />
